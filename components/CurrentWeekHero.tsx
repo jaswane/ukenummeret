@@ -31,7 +31,7 @@ export default function CurrentWeekHero() {
             </dd>
           </div>
           <div className="flex items-baseline justify-between gap-4 border-t border-rule pt-3 sm:justify-start">
-            <dt className="uppercase tracking-[0.14em]">ISO-år</dt>
+            <dt className="uppercase tracking-[0.14em]">År</dt>
             <dd className="tnum text-ink">{info.isoYear}</dd>
           </div>
           {next && (

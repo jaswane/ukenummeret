@@ -25,6 +25,7 @@ export default function YearWeekStrip({
       <ol className="mt-4 grid grid-cols-[repeat(auto-fill,minmax(2.25rem,1fr))] gap-[2px]">
         {Array.from({ length: total }, (_, i) => i + 1).map((w) => {
           const isCurrent = currentWeek === w;
+          const isPast = currentWeek !== undefined && w < currentWeek;
           return (
             <li key={w}>
               <Link
@@ -34,6 +35,8 @@ export default function YearWeekStrip({
                   "flex h-9 items-center justify-center text-[12px] tnum transition-colors " +
                   (isCurrent
                     ? "bg-ink text-paper"
+                    : isPast
+                    ? "border border-accent/15 bg-accent/[0.04] text-accent/55 hover:border-ink hover:text-ink"
                     : "border border-rule text-muted hover:border-ink hover:text-ink")
                 }
               >
