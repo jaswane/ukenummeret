@@ -1,0 +1,42 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --color-paper: #f6f2ec;
+  --color-ink: #111111;
+  --color-muted: #6b6760;
+  --color-rule: #e3dcd1;
+  --color-accent: #2e5aac;
+}
+
+html {
+  background-color: var(--color-paper);
+  color: var(--color-ink);
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+body {
+  font-feature-settings: "ss01", "cv11", "tnum";
+}
+
+::selection {
+  background-color: var(--color-ink);
+  color: var(--color-paper);
+}
+
+a {
+  color: inherit;
+}
+
+@layer base {
+  h1, h2, h3, h4 {
+    font-feature-settings: "ss01";
+  }
+}
+
+/* Numerisk preset for tall som skal stå pent. */
+.tnum {
+  font-variant-numeric: tabular-nums;
+}

@@ -1,0 +1,16 @@
+node_modules
+.next
+out
+build
+dist
+.env*
+!.env.example
+.DS_Store
+.vercel
+*.log
+coverage
+.vscode
+.idea
+next-env.d.ts
+tsconfig.tsbuildinfo
+.claude/launch.json
