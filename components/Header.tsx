@@ -32,7 +32,7 @@ export default function Header() {
         </Link>
 
         <nav className="hidden sm:block" aria-label="Hovedmeny">
-          <ul className="flex items-center gap-x-5 text-[14px] text-muted">
+          <ul className="flex items-center gap-x-5 text-[14px] text-subtle">
             {nav.map((item) => (
               <li key={item.href}>
                 <Link

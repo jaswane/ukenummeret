@@ -30,7 +30,7 @@ export default function MobileNav({ items }: { items: Item[] }) {
         aria-expanded={open}
         aria-controls="mobile-nav-panel"
         onClick={() => setOpen((v) => !v)}
-        className="px-2 py-1 text-[14px] text-muted transition-colors hover:text-ink"
+        className="px-2 py-1 text-[14px] text-subtle transition-colors hover:text-ink"
       >
         {open ? "Lukk" : "Meny"}
       </button>

@@ -101,8 +101,8 @@ export default async function DateToWeekPage({
           </p>
         )}
 
-        <section className="mt-16 max-w-prose space-y-4 text-[16px] leading-relaxed text-muted">
-          <h2 className="text-[14px] uppercase tracking-[0.18em] text-muted">
+        <section className="mt-16 max-w-prose space-y-4 text-[16px] leading-relaxed text-subtle">
+          <h2 className="text-[14px] uppercase tracking-[0.18em] text-subtle">
             Om ISO-uker
           </h2>
           <p>

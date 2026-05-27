@@ -9,11 +9,15 @@ const config: Config = {
   theme: {
     extend: {
       colors: {
-        paper: "#F6F2EC",
-        ink: "#111111",
-        muted: "#544F47",
-        rule: "#E3DCD1",
-        accent: "#2E5AAC",
+        paper: "#F6F1E8",
+        panel: "#FBF8F2",
+        ink: "#111827",
+        subtle: "#374151",
+        muted: "#6B7280",
+        rule: "#DDD4C5",
+        accent: "#2456A6",
+        accentHover: "#1D4588",
+        tintBlue: "#EAF1FF",
       },
       fontFamily: {
         sans: [

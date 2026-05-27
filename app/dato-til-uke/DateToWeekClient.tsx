@@ -35,7 +35,7 @@ export default function DateToWeekClient({
       <div>
         <label
           htmlFor="dato-input"
-          className="block text-[14px] uppercase tracking-[0.18em] text-muted"
+          className="block text-[14px] uppercase tracking-[0.18em] text-subtle"
         >
           Velg dato
         </label>
@@ -44,7 +44,7 @@ export default function DateToWeekClient({
           type="date"
           value={iso}
           onChange={(e) => setIso(e.target.value)}
-          className="mt-3 w-full max-w-xs border border-rule bg-paper px-4 py-3 text-[16px] tnum text-ink focus:border-ink focus:outline-none"
+          className="mt-3 w-full max-w-xs border border-rule bg-panel px-4 py-3 text-[16px] tnum text-ink focus:border-accent focus:outline-none"
         />
       </div>
 
@@ -73,7 +73,7 @@ export default function DateToWeekClient({
                 key={k}
                 className="flex items-baseline justify-between gap-4 border-t border-rule pt-3 sm:justify-start"
               >
-                <dt className="text-[13px] uppercase tracking-[0.14em] text-muted">
+                <dt className="text-[13px] uppercase tracking-[0.14em] text-subtle">
                   {k}
                 </dt>
                 <dd className="text-[16px] tnum text-ink">{v}</dd>

@@ -131,7 +131,7 @@ export default async function CalendarYearPage({
           {prev ? (
             <Link
               href={`/kalender-${prev}`}
-              className="text-muted underline decoration-rule underline-offset-4 transition-colors hover:text-ink hover:decoration-ink"
+              className="text-subtle underline decoration-rule underline-offset-4 transition-colors hover:text-ink hover:decoration-ink"
             >
               ← Kalender {prev}
             </Link>
@@ -141,7 +141,7 @@ export default async function CalendarYearPage({
           {next ? (
             <Link
               href={`/kalender-${next}`}
-              className="text-muted underline decoration-rule underline-offset-4 transition-colors hover:text-ink hover:decoration-ink"
+              className="text-subtle underline decoration-rule underline-offset-4 transition-colors hover:text-ink hover:decoration-ink"
             >
               Kalender {next} →
             </Link>

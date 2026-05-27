@@ -93,7 +93,7 @@ export default async function HolidaysYearPage({
 
       <div className="mx-auto max-w-3xl px-5 py-12 sm:px-8 sm:py-16">
         <section>
-          <h2 className="text-[14px] uppercase tracking-[0.18em] text-muted">
+          <h2 className="text-[14px] uppercase tracking-[0.18em] text-subtle">
             Offentlige helligdager
           </h2>
           <div className="mt-4">
@@ -102,10 +102,10 @@ export default async function HolidaysYearPage({
         </section>
 
         <section className="mt-16">
-          <h2 className="text-[14px] uppercase tracking-[0.18em] text-muted">
+          <h2 className="text-[14px] uppercase tracking-[0.18em] text-subtle">
             Merkedager
           </h2>
-          <p className="mt-2 max-w-prose text-[15px] text-muted">
+          <p className="mt-2 max-w-prose text-[15px] text-subtle">
             Merkedager er ikke offentlige fridager, men brukes ofte i hverdagen.
           </p>
           <div className="mt-4">
@@ -120,7 +120,7 @@ export default async function HolidaysYearPage({
           {prev ? (
             <Link
               href={`/helligdager-${prev}`}
-              className="text-muted underline decoration-rule underline-offset-4 transition-colors hover:text-ink hover:decoration-ink"
+              className="text-subtle underline decoration-rule underline-offset-4 transition-colors hover:text-ink hover:decoration-ink"
             >
               ← Helligdager {prev}
             </Link>
@@ -130,7 +130,7 @@ export default async function HolidaysYearPage({
           {next ? (
             <Link
               href={`/helligdager-${next}`}
-              className="text-muted underline decoration-rule underline-offset-4 transition-colors hover:text-ink hover:decoration-ink"
+              className="text-subtle underline decoration-rule underline-offset-4 transition-colors hover:text-ink hover:decoration-ink"
             >
               Helligdager {next} →
             </Link>

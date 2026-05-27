@@ -21,7 +21,7 @@ export default function SimplePageHeader({
           </div>
         )}
         {eyebrow && (
-          <p className="mb-4 text-[13px] uppercase tracking-[0.18em] text-muted">
+          <p className="mb-4 text-[13px] uppercase tracking-[0.18em] text-subtle">
             {eyebrow}
           </p>
         )}
@@ -29,7 +29,7 @@ export default function SimplePageHeader({
           {title}
         </h1>
         {intro && (
-          <div className="mt-6 max-w-prose text-[17px] leading-relaxed text-muted">
+          <div className="mt-6 max-w-prose text-[17px] leading-relaxed text-subtle">
             {intro}
           </div>
         )}

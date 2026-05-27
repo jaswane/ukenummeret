@@ -26,29 +26,29 @@ export default function DatakilderPage() {
           årstabeller, og vi kopierer ikke kalenderdata fra tredjeparter.
         </p>
 
-        <h2 className="mt-10 text-[15px] uppercase tracking-[0.18em] text-muted">
+        <h2 className="mt-10 text-[15px] uppercase tracking-[0.18em] text-subtle">
           Ukenummer
         </h2>
-        <p className="mt-3 text-muted">
+        <p className="mt-3 text-subtle">
           Ukenummer beregnes etter ISO 8601. Uken starter på mandag, og uke 1
           er uken som inneholder årets første torsdag (alternativt:
           uken som inneholder 4. januar). Et ISO-år har 53 uker når 1. januar
           er torsdag, eller når 31. desember er torsdag i et skuddår.
         </p>
 
-        <h2 className="mt-10 text-[15px] uppercase tracking-[0.18em] text-muted">
+        <h2 className="mt-10 text-[15px] uppercase tracking-[0.18em] text-subtle">
           Tidssone
         </h2>
-        <p className="mt-3 text-muted">
+        <p className="mt-3 text-subtle">
           Dagens dato bestemmes i norsk tidssone (Europe/Oslo), inkludert
           sommertid og vintertid. Det betyr at «i dag» alltid er i tråd med
           klokken i Norge, uavhengig av hvor besøkende åpner siden fra.
         </p>
 
-        <h2 className="mt-10 text-[15px] uppercase tracking-[0.18em] text-muted">
+        <h2 className="mt-10 text-[15px] uppercase tracking-[0.18em] text-subtle">
           Norske helligdager
         </h2>
-        <p className="mt-3 text-muted">
+        <p className="mt-3 text-subtle">
           Faste helligdager (1. nyttårsdag, 1. mai, 17. mai, 1. og 2. juledag)
           beregnes direkte fra datoen. Bevegelige helligdager beregnes fra
           påskedag via den anonyme gregorianske påskeformelen (Meeus/Jones/
@@ -57,10 +57,10 @@ export default function DatakilderPage() {
           1. og 2. pinsedag er henholdsvis 39, 49 og 50 dager etter påskedag.
         </p>
 
-        <h2 className="mt-10 text-[15px] uppercase tracking-[0.18em] text-muted">
+        <h2 className="mt-10 text-[15px] uppercase tracking-[0.18em] text-subtle">
           Merkedager
         </h2>
-        <p className="mt-3 text-muted">
+        <p className="mt-3 text-subtle">
           Merkedager som julaften, sankthansaften, Halloween, morsdag og
           farsdag er ikke offentlige fridager i Norge. De vises i en egen
           seksjon, tydelig skilt fra de offentlige helligdagene. Morsdag er

@@ -113,7 +113,7 @@ export default async function WeeksYearPage({
                     (isCurrent ? "text-accent" : "text-ink hover:text-accent")
                   }
                 >
-                  <span className="text-[14px] uppercase tracking-[0.14em] text-muted">
+                  <span className="text-[14px] uppercase tracking-[0.14em] text-subtle">
                     Uke <span className="tnum text-ink">{week}</span>
                     {isCurrent && (
                       <span className="ml-2 text-accent">· nå</span>
@@ -135,7 +135,7 @@ export default async function WeeksYearPage({
           {prev ? (
             <Link
               href={`/uker/${prev}`}
-              className="text-muted underline decoration-rule underline-offset-4 transition-colors hover:text-ink hover:decoration-ink"
+              className="text-subtle underline decoration-rule underline-offset-4 transition-colors hover:text-ink hover:decoration-ink"
             >
               ← Uker i {prev}
             </Link>
@@ -145,7 +145,7 @@ export default async function WeeksYearPage({
           {next ? (
             <Link
               href={`/uker/${next}`}
-              className="text-muted underline decoration-rule underline-offset-4 transition-colors hover:text-ink hover:decoration-ink"
+              className="text-subtle underline decoration-rule underline-offset-4 transition-colors hover:text-ink hover:decoration-ink"
             >
               Uker i {next} →
             </Link>

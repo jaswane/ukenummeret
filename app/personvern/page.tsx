@@ -24,10 +24,10 @@ export default function PersonvernPage() {
           informasjon som mulig om deg.
         </p>
 
-        <h2 className="mt-10 text-[15px] uppercase tracking-[0.18em] text-muted">
+        <h2 className="mt-10 text-[15px] uppercase tracking-[0.18em] text-subtle">
           Hva vi samler inn
         </h2>
-        <p className="mt-3 text-muted">
+        <p className="mt-3 text-subtle">
           I denne versjonen av Ukenummeret.no kjører vi ingen analyseverktøy
           som Google Analytics, og vi setter ingen sporingsinformasjonskapsler.
           Hvis vi senere legger til analyse for å forstå bruksmønstre, vil
@@ -35,19 +35,19 @@ export default function PersonvernPage() {
           verktøy som brukes og hvilke data som samles inn.
         </p>
 
-        <h2 className="mt-10 text-[15px] uppercase tracking-[0.18em] text-muted">
+        <h2 className="mt-10 text-[15px] uppercase tracking-[0.18em] text-subtle">
           Logger
         </h2>
-        <p className="mt-3 text-muted">
+        <p className="mt-3 text-subtle">
           Vår hostingleverandør kan logge tekniske detaljer som IP-adresse og
           forespørselstidspunkt for å sikre stabil drift. Disse loggene brukes
           ikke til markedsføring eller profilering.
         </p>
 
-        <h2 className="mt-10 text-[15px] uppercase tracking-[0.18em] text-muted">
+        <h2 className="mt-10 text-[15px] uppercase tracking-[0.18em] text-subtle">
           E-post
         </h2>
-        <p className="mt-3 text-muted">
+        <p className="mt-3 text-subtle">
           Hvis du sender oss en e-post via vår{" "}
           <Link
             href="/kontakt"
@@ -59,10 +59,10 @@ export default function PersonvernPage() {
           e-postinnhold med tredjeparter.
         </p>
 
-        <h2 className="mt-10 text-[15px] uppercase tracking-[0.18em] text-muted">
+        <h2 className="mt-10 text-[15px] uppercase tracking-[0.18em] text-subtle">
           Endringer
         </h2>
-        <p className="mt-3 text-muted">
+        <p className="mt-3 text-subtle">
           Denne erklæringen kan oppdateres. Vesentlige endringer beskrives på
           denne siden.
         </p>

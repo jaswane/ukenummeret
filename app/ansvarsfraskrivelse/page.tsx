@@ -26,13 +26,13 @@ export default function AnsvarsfraskrivelsePage() {
           beregne ukenummer, datoer og helligdager korrekt, men kan ikke
           garantere at all informasjon alltid er feilfri.
         </p>
-        <p className="mt-5 text-muted">
+        <p className="mt-5 text-subtle">
           Dobbeltsjekk datoer mot offisielle kilder hvis du skal bruke dem til
           viktige juridiske, offentlige eller arbeidsrelaterte frister. Vi tar
           ikke ansvar for tap eller konsekvenser som følge av at innhold på
           siden brukes som beslutningsgrunnlag.
         </p>
-        <p className="mt-5 text-muted">
+        <p className="mt-5 text-subtle">
           Finner du en feil, hører vi gjerne fra deg.
         </p>
 

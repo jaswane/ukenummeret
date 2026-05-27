@@ -15,7 +15,7 @@ export default function CurrentWeekHero() {
   return (
     <section className="border-b border-rule">
       <div className="mx-auto max-w-3xl px-5 pb-16 pt-12 sm:px-8 sm:pb-24 sm:pt-20">
-        <p className="text-[14px] uppercase tracking-[0.2em] text-muted">
+        <p className="text-[14px] uppercase tracking-[0.2em] text-subtle">
           Denne uken
         </p>
         <h1 className="mt-6 text-[88px] font-medium leading-[0.9] tracking-tightest tnum text-ink sm:text-[140px]">
@@ -24,7 +24,7 @@ export default function CurrentWeekHero() {
         <p className="mt-6 text-[20px] tnum text-ink sm:text-[24px]">
           {formatNorwegianDateRange(info.start, info.end)}
         </p>
-        <dl className="mt-8 grid grid-cols-1 gap-y-3 text-[15px] text-muted sm:grid-cols-2 sm:gap-x-12">
+        <dl className="mt-8 grid grid-cols-1 gap-y-3 text-[15px] text-subtle sm:grid-cols-2 sm:gap-x-12">
           <div className="flex items-baseline justify-between gap-4 border-t border-rule pt-3 sm:justify-start">
             <dt className="uppercase tracking-[0.14em]">I dag</dt>
             <dd className="tnum text-ink">

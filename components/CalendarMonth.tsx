@@ -72,7 +72,7 @@ export default function CalendarMonth({
               : null;
             return (
               <tr key={rowIdx} className="border-t border-rule/70">
-                <td className="py-1.5 pr-1 text-left text-[11px] uppercase tracking-[0.14em] text-muted">
+                <td className="py-1.5 pr-1 text-left text-[11px] uppercase tracking-[0.14em] text-subtle">
                   {isoWeek ?? ""}
                 </td>
                 {row.map((cell, colIdx) => {
@@ -94,12 +94,12 @@ export default function CalendarMonth({
                           : isHoliday
                           ? "text-accent"
                           : isWeekend
-                          ? "text-muted"
+                          ? "text-subtle"
                           : "text-ink")
                       }
                     >
                       {isToday ? (
-                        <span className="inline-flex h-6 w-6 items-center justify-center bg-ink text-paper">
+                        <span className="inline-flex h-6 w-6 items-center justify-center bg-accent text-paper">
                           {cell.day}
                         </span>
                       ) : (

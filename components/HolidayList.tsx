@@ -22,11 +22,11 @@ export default function HolidayList({
               <span className={h.kind === "public" ? "text-ink" : "text-muted"}>
                 {h.name}
               </span>
-              <span className="ml-3 text-[13px] uppercase tracking-[0.14em] text-muted">
+              <span className="ml-3 text-[13px] uppercase tracking-[0.14em] text-subtle">
                 {capitalize(meta.weekday)} · uke {meta.isoWeek}
               </span>
             </span>
-            <span className="text-[13px] uppercase tracking-[0.14em] text-muted sm:text-right">
+            <span className="text-[13px] uppercase tracking-[0.14em] text-subtle sm:text-right">
               {meta.daysUntil === null
                 ? ""
                 : meta.daysUntil === 0

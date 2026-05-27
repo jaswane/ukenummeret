@@ -36,7 +36,7 @@ export default function WeekSearch({
       <label htmlFor="ws-input" className="sr-only">
         {ariaLabel}
       </label>
-      <div className="flex items-stretch border border-rule bg-paper focus-within:border-ink">
+      <div className="flex items-stretch border border-rule bg-panel transition-colors focus-within:border-accent">
         <input
           id="ws-input"
           type="text"
@@ -44,12 +44,12 @@ export default function WeekSearch({
           value={value}
           onChange={(e) => setValue(e.target.value)}
           placeholder={placeholder}
-          className="flex-1 bg-transparent px-4 py-3 text-[16px] placeholder:text-muted/70 focus:outline-none"
+          className="flex-1 bg-transparent px-4 py-3 text-[16px] text-ink placeholder:text-muted focus:outline-none"
           autoComplete="off"
         />
         <button
           type="submit"
-          className="border-l border-rule px-5 py-3 text-[14px] font-medium text-ink transition-colors hover:bg-ink hover:text-paper"
+          className="border-l border-rule px-5 py-3 text-[14px] font-medium text-ink transition-colors hover:bg-accent hover:text-paper"
         >
           Slå opp
         </button>

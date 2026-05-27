@@ -6,7 +6,7 @@ export default function Breadcrumbs({ items }: { items: Crumb[] }) {
   return (
     <nav
       aria-label="Brødsmuler"
-      className="text-[13px] uppercase tracking-[0.14em] text-muted"
+      className="text-[13px] uppercase tracking-[0.14em] text-subtle"
     >
       <ol className="flex flex-wrap items-center gap-1">
         {items.map((item, i) => (

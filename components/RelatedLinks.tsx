@@ -13,7 +13,7 @@ export default function RelatedLinks({
     <section aria-labelledby="related-heading">
       <h2
         id="related-heading"
-        className="text-[14px] uppercase tracking-[0.18em] text-muted"
+        className="text-[14px] uppercase tracking-[0.18em] text-subtle"
       >
         {title}
       </h2>
@@ -28,7 +28,7 @@ export default function RelatedLinks({
                 {item.label}
               </span>
               {item.hint && (
-                <span className="text-[13px] uppercase tracking-[0.14em] text-muted">
+                <span className="text-[13px] uppercase tracking-[0.14em] text-subtle">
                   {item.hint}
                 </span>
               )}

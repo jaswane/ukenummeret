@@ -6,7 +6,7 @@ export default function PageCrossLinks({ items }: { items: Item[] }) {
   return (
     <nav
       aria-label="Relaterte sider"
-      className="mt-12 border-t border-rule pt-6 text-[14px] text-muted"
+      className="mt-12 border-t border-rule pt-6 text-[14px] text-subtle"
     >
       <p className="flex flex-wrap gap-x-6 gap-y-2">
         {items.map((item) => (

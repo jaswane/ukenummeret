@@ -76,14 +76,14 @@ export default function HomePage() {
           <section aria-labelledby="search-heading">
             <h2
               id="search-heading"
-              className="text-[14px] uppercase tracking-[0.18em] text-muted"
+              className="text-[14px] uppercase tracking-[0.18em] text-subtle"
             >
               Slå opp dato eller uke
             </h2>
             <div className="mt-4">
               <WeekSearch />
             </div>
-            <p className="mt-3 text-[14px] text-muted">
+            <p className="mt-3 text-[14px] text-subtle">
               Eksempler: <span className="tnum">26.05.2026</span>,{" "}
               <span className="tnum">2026-05-26</span>, 26 mai 2026, uke 22,
               uke 22 2027.

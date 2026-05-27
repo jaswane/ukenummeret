@@ -24,13 +24,13 @@ export default function OmPage() {
           gjøre den enkle handlingen «slå opp en uke eller en dato» raskere og
           tydeligere enn alternativene.
         </p>
-        <p className="mt-5 text-muted">
+        <p className="mt-5 text-subtle">
           Alle ukenummer er beregnet etter ISO 8601, som er standarden Norge
           bruker. Uken starter på mandag og slutter på søndag, og uke 1 er
           uken som inneholder årets første torsdag. Datoer er beregnet i norsk
           tidssone, Europe/Oslo.
         </p>
-        <p className="mt-5 text-muted">
+        <p className="mt-5 text-subtle">
           Siden er bygget og drevet av Swane Creative. Den er reklamefri,
           inneholder ingen sporing i denne versjonen, og er bygget for å
           fungere år etter år uten manuell oppdatering av kalenderdata.

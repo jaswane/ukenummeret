@@ -43,7 +43,7 @@ export default function WeekToDateClient({
         <div>
           <label
             htmlFor="year-input"
-            className="block text-[14px] uppercase tracking-[0.18em] text-muted"
+            className="block text-[14px] uppercase tracking-[0.18em] text-subtle"
           >
             År
           </label>
@@ -51,7 +51,7 @@ export default function WeekToDateClient({
             id="year-input"
             value={year}
             onChange={(e) => setYear(Number(e.target.value))}
-            className="mt-3 w-full border border-rule bg-paper px-4 py-3 text-[16px] tnum text-ink focus:border-ink focus:outline-none"
+            className="mt-3 w-full border border-rule bg-panel px-4 py-3 text-[16px] tnum text-ink focus:border-accent focus:outline-none"
           >
             {years.map((y) => (
               <option key={y} value={y}>
@@ -63,7 +63,7 @@ export default function WeekToDateClient({
         <div>
           <label
             htmlFor="week-input"
-            className="block text-[14px] uppercase tracking-[0.18em] text-muted"
+            className="block text-[14px] uppercase tracking-[0.18em] text-subtle"
           >
             Ukenummer (1–{maxWeeks})
           </label>
@@ -74,7 +74,7 @@ export default function WeekToDateClient({
             max={53}
             value={week}
             onChange={(e) => setWeek(Number(e.target.value))}
-            className="mt-3 w-full border border-rule bg-paper px-4 py-3 text-[16px] tnum text-ink focus:border-ink focus:outline-none"
+            className="mt-3 w-full border border-rule bg-panel px-4 py-3 text-[16px] tnum text-ink focus:border-accent focus:outline-none"
           />
         </div>
       </div>
@@ -91,7 +91,7 @@ export default function WeekToDateClient({
             <span className="tnum">{formatNorwegianDate(range.start)}</span> til
             søndag <span className="tnum">{formatNorwegianDate(range.end)}</span>.
           </p>
-          <p className="text-[16px] text-muted">
+          <p className="text-[16px] text-subtle">
             {formatNorwegianDateRange(range.start, range.end)}
           </p>
 
@@ -101,7 +101,7 @@ export default function WeekToDateClient({
                 key={i}
                 className="flex items-baseline justify-between gap-4 py-3"
               >
-                <span className="text-[13px] uppercase tracking-[0.14em] text-muted">
+                <span className="text-[13px] uppercase tracking-[0.14em] text-subtle">
                   {capitalize(WEEKDAY_NAMES[isoWeekday(d) - 1])}
                 </span>
                 <span className="text-[15px] tnum text-ink">

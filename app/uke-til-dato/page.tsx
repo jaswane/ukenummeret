@@ -66,8 +66,8 @@ export default async function WeekToDatePage({
       <div className="mx-auto max-w-3xl px-5 py-12 sm:px-8 sm:py-16">
         <WeekToDateClient initialYear={initialYear} initialWeek={initialWeek} />
 
-        <section className="mt-16 max-w-prose space-y-4 text-[16px] leading-relaxed text-muted">
-          <h2 className="text-[14px] uppercase tracking-[0.18em] text-muted">
+        <section className="mt-16 max-w-prose space-y-4 text-[16px] leading-relaxed text-subtle">
+          <h2 className="text-[14px] uppercase tracking-[0.18em] text-subtle">
             Om uke 53
           </h2>
           <p>

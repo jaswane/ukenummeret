@@ -11,7 +11,7 @@ export default function FAQ({
     <section aria-labelledby="faq-heading">
       <h2
         id="faq-heading"
-        className="text-[14px] uppercase tracking-[0.18em] text-muted"
+        className="text-[14px] uppercase tracking-[0.18em] text-subtle"
       >
         {title}
       </h2>
@@ -21,7 +21,7 @@ export default function FAQ({
             <dt className="text-[18px] font-medium text-ink">
               {item.question}
             </dt>
-            <dd className="mt-2 max-w-prose text-[16px] leading-relaxed text-muted">
+            <dd className="mt-2 max-w-prose text-[16px] leading-relaxed text-subtle">
               {item.answer}
             </dd>
           </div>
