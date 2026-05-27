@@ -1,45 +1,32 @@
 import Link from "next/link";
 import { getCurrentNorwegianDate } from "@/lib/weekUtils";
 
+const LINKS = [
+  { href: "/om", label: "Om Ukenummeret.no" },
+  { href: "/personvern", label: "Personvern" },
+  { href: "/kontakt", label: "Kontakt" },
+  { href: "/datakilder-og-beregning", label: "Datakilder og beregning" },
+  { href: "/ansvarsfraskrivelse", label: "Ansvarsfraskrivelse" },
+];
+
 export default function Footer() {
   const year = getCurrentNorwegianDate().getUTCFullYear();
   return (
     <footer className="mt-24 border-t border-rule">
-      <div className="mx-auto max-w-5xl px-5 py-10 text-[14px] text-muted sm:px-8">
-        <ul className="flex flex-wrap gap-x-6 gap-y-2">
-          <li>
-            <Link href="/om" className="transition-colors hover:text-ink">
-              Om Ukenummeret.no
-            </Link>
-          </li>
-          <li>
-            <Link href="/personvern" className="transition-colors hover:text-ink">
-              Personvern
-            </Link>
-          </li>
-          <li>
-            <Link href="/kontakt" className="transition-colors hover:text-ink">
-              Kontakt
-            </Link>
-          </li>
-          <li>
-            <Link
-              href="/datakilder-og-beregning"
-              className="transition-colors hover:text-ink"
-            >
-              Datakilder og beregning
-            </Link>
-          </li>
-          <li>
-            <Link
-              href="/ansvarsfraskrivelse"
-              className="transition-colors hover:text-ink"
-            >
-              Ansvarsfraskrivelse
-            </Link>
-          </li>
+      <div className="mx-auto max-w-3xl px-5 py-10 text-center text-[14px] text-muted sm:px-8 sm:text-left">
+        <ul className="flex flex-col items-center gap-y-3 sm:flex-row sm:flex-wrap sm:items-baseline sm:gap-x-6 sm:gap-y-2">
+          {LINKS.map((l) => (
+            <li key={l.href}>
+              <Link
+                href={l.href}
+                className="transition-colors hover:text-ink"
+              >
+                {l.label}
+              </Link>
+            </li>
+          ))}
         </ul>
-        <p className="mt-6">
+        <p className="mt-8 sm:mt-6">
           © {year}{" "}
           <a
             href="https://swanecreative.no"

@@ -13,6 +13,9 @@ import { getCurrentNorwegianDate } from "@/lib/weekUtils";
 
 const SUPPORTED_YEARS = Array.from({ length: 11 }, (_, i) => 2025 + i);
 
+// "Om X dager"-tellingen krever oppdatert dato. Re-bygg hver time.
+export const revalidate = 3600;
+
 export function generateStaticParams() {
   return SUPPORTED_YEARS.map((year) => ({ year: String(year) }));
 }

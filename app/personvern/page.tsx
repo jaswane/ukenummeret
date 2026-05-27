@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import SimplePageHeader from "@/components/SimplePageHeader";
+import PageCrossLinks from "@/components/PageCrossLinks";
 
 export const metadata: Metadata = {
   title: "Personvern",
@@ -65,6 +66,13 @@ export default function PersonvernPage() {
           Denne erklæringen kan oppdateres. Vesentlige endringer beskrives på
           denne siden.
         </p>
+
+        <PageCrossLinks
+          items={[
+            { href: "/kontakt", label: "Kontakt" },
+            { href: "/ansvarsfraskrivelse", label: "Ansvarsfraskrivelse" },
+          ]}
+        />
       </article>
     </>
   );

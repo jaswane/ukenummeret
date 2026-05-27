@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import SimplePageHeader from "@/components/SimplePageHeader";
+import PageCrossLinks from "@/components/PageCrossLinks";
 
 export const metadata: Metadata = {
   title: "Ansvarsfraskrivelse",
@@ -34,6 +35,13 @@ export default function AnsvarsfraskrivelsePage() {
         <p className="mt-5 text-muted">
           Finner du en feil, hører vi gjerne fra deg.
         </p>
+
+        <PageCrossLinks
+          items={[
+            { href: "/datakilder-og-beregning", label: "Datakilder og beregning" },
+            { href: "/kontakt", label: "Kontakt" },
+          ]}
+        />
       </article>
     </>
   );

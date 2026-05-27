@@ -1,4 +1,5 @@
 import Link from "next/link";
+import MobileNav from "./MobileNav";
 import { getCurrentNorwegianDate, getIsoWeek } from "@/lib/weekUtils";
 
 const NAV = [
@@ -21,16 +22,17 @@ export default function Header() {
   );
 
   return (
-    <header className="border-b border-rule">
-      <div className="mx-auto flex max-w-5xl flex-wrap items-center justify-between gap-4 px-5 py-5 sm:px-8">
+    <header className="relative border-b border-rule">
+      <div className="mx-auto flex max-w-3xl items-center justify-between gap-4 px-5 py-5 sm:px-8">
         <Link
           href="/"
           className="text-[15px] font-medium tracking-tight text-ink"
         >
           Ukenummeret<span className="text-muted">.no</span>
         </Link>
-        <nav>
-          <ul className="flex flex-wrap items-center gap-x-5 gap-y-2 text-[14px] text-muted">
+
+        <nav className="hidden sm:block" aria-label="Hovedmeny">
+          <ul className="flex items-center gap-x-5 text-[14px] text-muted">
             {nav.map((item) => (
               <li key={item.href}>
                 <Link
@@ -43,6 +45,8 @@ export default function Header() {
             ))}
           </ul>
         </nav>
+
+        <MobileNav items={nav} />
       </div>
     </header>
   );

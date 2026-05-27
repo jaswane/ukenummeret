@@ -6,6 +6,9 @@ import FAQ, { faqJsonLd } from "@/components/FAQ";
 import RelatedLinks from "@/components/RelatedLinks";
 import { getCurrentNorwegianDate, getIsoWeek } from "@/lib/weekUtils";
 
+// Hold "i dag" oppdatert: re-bygg minst hver time så ukedag/uke ikke fryser.
+export const revalidate = 3600;
+
 export const metadata: Metadata = {
   title: "Hvilken uke er det nå? Ukenummer i dag | Ukenummeret.no",
   description:

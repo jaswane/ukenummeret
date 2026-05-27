@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import SimplePageHeader from "@/components/SimplePageHeader";
+import PageCrossLinks from "@/components/PageCrossLinks";
 
 export const metadata: Metadata = {
   title: "Datakilder og beregning",
@@ -65,6 +66,13 @@ export default function DatakilderPage() {
           seksjon, tydelig skilt fra de offentlige helligdagene. Morsdag er
           andre søndag i februar, farsdag er andre søndag i november.
         </p>
+
+        <PageCrossLinks
+          items={[
+            { href: "/ansvarsfraskrivelse", label: "Ansvarsfraskrivelse" },
+            { href: "/om", label: "Om Ukenummeret.no" },
+          ]}
+        />
       </article>
     </>
   );

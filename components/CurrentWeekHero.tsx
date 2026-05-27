@@ -1,3 +1,4 @@
+import Link from "next/link";
 import {
   capitalize,
   formatNorwegianDateRange,
@@ -30,15 +31,16 @@ export default function CurrentWeekHero() {
               {capitalize(info.weekdayName)} · dag {info.dayOfWeek} av 7
             </dd>
           </div>
-          <div className="flex items-baseline justify-between gap-4 border-t border-rule pt-3 sm:justify-start">
-            <dt className="uppercase tracking-[0.14em]">År</dt>
-            <dd className="tnum text-ink">{info.isoYear}</dd>
-          </div>
           {next && (
-            <div className="col-span-1 flex items-baseline justify-between gap-4 border-t border-rule pt-3 sm:col-span-2 sm:justify-start">
+            <div className="flex items-baseline justify-between gap-4 border-t border-rule pt-3 sm:justify-start">
               <dt className="uppercase tracking-[0.14em]">Neste fridag</dt>
               <dd className="text-ink">
-                <span className="text-accent">{next.name}</span>{" "}
+                <Link
+                  href={`/helligdager-${next.date.getUTCFullYear()}`}
+                  className="text-accent underline decoration-accent/30 underline-offset-4 transition-colors hover:decoration-accent"
+                >
+                  {next.name}
+                </Link>{" "}
                 <span className="text-muted">
                   {next.daysUntil === 0
                     ? "i dag"

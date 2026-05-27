@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import SimplePageHeader from "@/components/SimplePageHeader";
+import PageCrossLinks from "@/components/PageCrossLinks";
 
 export const metadata: Metadata = {
   title: "Kontakt",
@@ -31,9 +32,13 @@ export default function KontaktPage() {
           </a>
           . Vi leser alt.
         </p>
-        <p className="mt-5 text-muted">
-          Ukenummeret.no driftes av Swane Creative.
-        </p>
+
+        <PageCrossLinks
+          items={[
+            { href: "/om", label: "Om Ukenummeret.no" },
+            { href: "/personvern", label: "Personvern" },
+          ]}
+        />
       </article>
     </>
   );

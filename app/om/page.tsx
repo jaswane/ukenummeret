@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import SimplePageHeader from "@/components/SimplePageHeader";
+import PageCrossLinks from "@/components/PageCrossLinks";
 
 export const metadata: Metadata = {
   title: "Om Ukenummeret.no",
@@ -34,6 +35,13 @@ export default function OmPage() {
           inneholder ingen sporing i denne versjonen, og er bygget for å
           fungere år etter år uten manuell oppdatering av kalenderdata.
         </p>
+
+        <PageCrossLinks
+          items={[
+            { href: "/kontakt", label: "Kontakt" },
+            { href: "/datakilder-og-beregning", label: "Datakilder og beregning" },
+          ]}
+        />
       </article>
     </>
   );
