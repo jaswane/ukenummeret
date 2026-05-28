@@ -25,17 +25,21 @@ export default function CurrentWeekHero() {
         <p className="mt-6 text-[20px] tnum text-ink sm:text-[24px]">
           {formatNorwegianDateRange(info.start, info.end)}
         </p>
-        <dl className="mt-8 grid grid-cols-1 gap-y-3 text-[15px] text-subtle sm:grid-cols-2 sm:gap-x-12">
-          <div className="flex items-baseline justify-between gap-4 border-t border-rule pt-3 sm:justify-start">
-            <dt className="uppercase tracking-[0.14em]">I dag</dt>
+        <dl className="mt-8 space-y-3 text-[15px] text-subtle">
+          <div className="flex gap-x-4 border-t border-rule pt-3">
+            <dt className="w-32 shrink-0 whitespace-nowrap uppercase tracking-[0.14em]">
+              I dag
+            </dt>
             <dd className="tnum text-ink">
               {capitalize(info.weekdayName)} · {formatNorwegianDate(today)} · dag{" "}
               {info.dayOfWeek} av 7 i uken
             </dd>
           </div>
           {next && (
-            <div className="flex items-baseline justify-between gap-4 border-t border-rule pt-3 sm:justify-start">
-              <dt className="uppercase tracking-[0.14em]">Neste fridag</dt>
+            <div className="flex gap-x-4 border-t border-rule pt-3">
+              <dt className="w-32 shrink-0 whitespace-nowrap uppercase tracking-[0.14em]">
+                Neste fridag
+              </dt>
               <dd className="text-ink">
                 <Link
                   href={`/helligdager-${next.date.getUTCFullYear()}`}

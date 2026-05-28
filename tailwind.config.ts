@@ -18,6 +18,8 @@ const config: Config = {
         accent: "#2456A6",
         accentHover: "#1D4588",
         tintBlue: "#EAF1FF",
+        holiday: "#A6342E",
+        holidayHover: "#7F2722",
       },
       fontFamily: {
         sans: [

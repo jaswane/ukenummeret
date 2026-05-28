@@ -13,8 +13,8 @@ export default function Footer() {
   const year = getCurrentNorwegianDate().getUTCFullYear();
   return (
     <footer className="mt-24 border-t border-rule">
-      <div className="mx-auto max-w-3xl px-5 py-10 text-center text-[14px] text-subtle sm:px-8 sm:text-left">
-        <ul className="flex flex-col items-center gap-y-3 sm:flex-row sm:flex-wrap sm:items-baseline sm:gap-x-6 sm:gap-y-2">
+      <div className="mx-auto max-w-3xl px-5 py-10 text-center text-[14px] text-subtle sm:px-8">
+        <ul className="flex flex-col items-center gap-y-3 sm:flex-row sm:flex-wrap sm:justify-center sm:gap-x-6 sm:gap-y-2">
           {LINKS.map((l) => (
             <li key={l.href}>
               <Link

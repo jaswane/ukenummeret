@@ -1,3 +1,4 @@
+import Link from "next/link";
 import {
   civilDate,
   getIsoWeek,
@@ -6,6 +7,7 @@ import {
   MONTH_NAMES,
 } from "@/lib/weekUtils";
 import { getNorwegianPublicHolidays } from "@/lib/norwegianHolidays";
+import { getHolidayInfoByName } from "@/lib/holidayInfo";
 
 const WEEKDAY_HEADS = ["M", "T", "O", "T", "F", "L", "S"];
 
@@ -29,10 +31,10 @@ export default function CalendarMonth({
   }
   while (cells.length % 7 !== 0) cells.push({ day: null, date: null });
 
-  const holidays = new Map(
+  const holidays = new Map<string, { name: string; slug: string | null }>(
     getNorwegianPublicHolidays(year).map((h) => [
       `${h.date.getUTCMonth() + 1}-${h.date.getUTCDate()}`,
-      h.name,
+      { name: h.name, slug: getHolidayInfoByName(h.name)?.slug ?? null },
     ])
   );
 
@@ -80,31 +82,54 @@ export default function CalendarMonth({
                     return <td key={colIdx} className="py-1.5" />;
                   }
                   const key = `${cell.date.getUTCMonth() + 1}-${cell.date.getUTCDate()}`;
-                  const isHoliday = holidays.has(key);
+                  const holiday = holidays.get(key) ?? null;
                   const isWeekend = colIdx >= 5;
                   const isToday = today && isSameCivilDay(today, cell.date);
+
+                  let inner: React.ReactNode;
+                  if (isToday) {
+                    const square = (
+                      <span className="inline-flex h-6 w-6 items-center justify-center bg-accent text-paper">
+                        {cell.day}
+                      </span>
+                    );
+                    inner = holiday?.slug ? (
+                      <Link href={`/helligdager/${holiday.slug}`} title={holiday.name}>
+                        {square}
+                      </Link>
+                    ) : (
+                      square
+                    );
+                  } else if (holiday?.slug) {
+                    inner = (
+                      <Link
+                        href={`/helligdager/${holiday.slug}`}
+                        title={holiday.name}
+                        className="text-holiday underline decoration-transparent underline-offset-2 transition-colors hover:text-holidayHover hover:decoration-holidayHover"
+                      >
+                        {cell.day}
+                      </Link>
+                    );
+                  } else {
+                    inner = (
+                      <span
+                        title={holiday?.name}
+                        className={
+                          holiday
+                            ? "text-holiday"
+                            : isWeekend
+                            ? "text-subtle"
+                            : "text-ink"
+                        }
+                      >
+                        {cell.day}
+                      </span>
+                    );
+                  }
+
                   return (
-                    <td
-                      key={colIdx}
-                      title={isHoliday ? holidays.get(key) : undefined}
-                      className={
-                        "py-1.5 text-center " +
-                        (isToday
-                          ? "font-medium text-paper"
-                          : isHoliday
-                          ? "text-accent"
-                          : isWeekend
-                          ? "text-subtle"
-                          : "text-ink")
-                      }
-                    >
-                      {isToday ? (
-                        <span className="inline-flex h-6 w-6 items-center justify-center bg-accent text-paper">
-                          {cell.day}
-                        </span>
-                      ) : (
-                        cell.day
-                      )}
+                    <td key={colIdx} className="py-1.5 text-center">
+                      {inner}
                     </td>
                   );
                 })}
