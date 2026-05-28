@@ -21,10 +21,11 @@ import {
 } from "@/lib/weekUtils";
 import {
   getHolidayInfoBySlug,
-  HOLIDAY_INFO,
   HOLIDAY_SLUGS,
   type HolidayInfo,
 } from "@/lib/holidayInfo";
+import DayInfoPage, { type DayFact } from "@/components/DayInfoPage";
+import { resolveRelatedDays } from "@/lib/dayLinks";
 
 const SUPPORTED_YEARS = Array.from({ length: 11 }, (_, i) => 2025 + i);
 const YEAR_SLUGS = SUPPORTED_YEARS.map(String);
@@ -226,8 +227,7 @@ function HolidayInfoView({ info }: { info: HolidayInfo }) {
     (h) => h.name === info.name
   );
 
-  // Hvis årets dato er passert, bruk neste års dato som "kommende"
-  // mens vi viser begge i faktaboksen.
+  // Hvis årets dato er passert, bruk neste års dato som "kommende".
   const upcoming =
     thisYearHoliday && thisYearHoliday.date.getTime() >= today.getTime()
       ? thisYearHoliday
@@ -239,23 +239,7 @@ function HolidayInfoView({ info }: { info: HolidayInfo }) {
       : daysBetween(today, upcoming.date)
     : null;
 
-  const path = `/helligdager/${info.slug}`;
-  const crumbs = [
-    { href: "/", label: "Forside" },
-    { href: `/helligdager-${year}`, label: `Helligdager ${year}` },
-    { label: info.name },
-  ];
-
-  const webPageJsonLd = {
-    "@context": "https://schema.org",
-    "@type": "WebPage",
-    name: info.name,
-    url: `https://ukenummeret.no${path}`,
-    inLanguage: "nb-NO",
-    description: info.intro,
-  };
-
-  const facts: Array<{ k: string; v: string }> = [];
+  const facts: DayFact[] = [];
   if (thisYearHoliday) {
     const { isoWeek } = getIsoWeek(thisYearHoliday.date);
     const weekday = WEEKDAY_NAMES[isoWeekday(thisYearHoliday.date) - 1];
@@ -263,129 +247,44 @@ function HolidayInfoView({ info }: { info: HolidayInfo }) {
     facts.push({ k: "Ukedag", v: capitalize(weekday) });
     facts.push({ k: "Ukenummer", v: `Uke ${isoWeek}` });
   }
+  facts.push({ k: "Offentlig fridag", v: "Ja" });
   facts.push({
     k: "Type dato",
     v: info.fixed ? "Fast dato" : "Bevegelig (følger påsken)",
   });
-  if (nextYearHoliday && (!thisYearHoliday || upcoming === nextYearHoliday)) {
-    facts.push({
-      k: `Dato i ${year + 1}`,
-      v: formatNorwegianDate(nextYearHoliday.date),
-    });
-  } else if (nextYearHoliday) {
+  if (nextYearHoliday) {
     facts.push({
       k: `Dato i ${year + 1}`,
       v: formatNorwegianDate(nextYearHoliday.date),
     });
   }
-
-  const related = info.related
-    .map((slug) => HOLIDAY_INFO.find((h) => h.slug === slug))
-    .filter((h): h is HolidayInfo => Boolean(h));
+  if (upcoming && upcomingDays !== null) {
+    facts.push({
+      k: "Til neste",
+      v:
+        upcomingDays === 0
+          ? "I dag"
+          : upcomingDays === 1
+          ? "I morgen"
+          : `Om ${upcomingDays} dager`,
+    });
+  }
 
   return (
-    <>
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(webPageJsonLd) }}
-      />
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{
-          __html: JSON.stringify(breadcrumbJsonLd(crumbs)),
-        }}
-      />
-
-      <SimplePageHeader
-        eyebrow="Helligdag"
-        title={info.name}
-        intro={info.intro}
-        crumbs={crumbs}
-      />
-
-      <div className="mx-auto max-w-3xl px-5 py-12 sm:px-8 sm:py-16">
-        <section aria-labelledby="fakta-heading">
-          <h2
-            id="fakta-heading"
-            className="text-[14px] uppercase tracking-[0.18em] text-subtle"
-          >
-            Praktisk
-          </h2>
-          <dl className="mt-4 divide-y divide-rule border-y border-rule">
-            {facts.map((f) => (
-              <div
-                key={f.k}
-                className="flex items-baseline justify-between gap-4 py-3"
-              >
-                <dt className="text-[13px] uppercase tracking-[0.14em] text-subtle">
-                  {f.k}
-                </dt>
-                <dd className="text-[15px] tnum text-ink">{f.v}</dd>
-              </div>
-            ))}
-            {upcoming && upcomingDays !== null && (
-              <div className="flex items-baseline justify-between gap-4 py-3">
-                <dt className="text-[13px] uppercase tracking-[0.14em] text-subtle">
-                  Til neste
-                </dt>
-                <dd className="text-[15px] text-ink">
-                  {upcomingDays === 0
-                    ? "I dag"
-                    : upcomingDays === 1
-                    ? "I morgen"
-                    : `Om ${upcomingDays} dager`}
-                </dd>
-              </div>
-            )}
-          </dl>
-        </section>
-
-        <section className="mt-12 max-w-prose">
-          <h2 className="text-[14px] uppercase tracking-[0.18em] text-subtle">
-            Hvorfor er dette en fridag?
-          </h2>
-          <p className="mt-4 text-[17px] leading-relaxed text-subtle">
-            {info.explanation}
-          </p>
-        </section>
-
-        {related.length > 0 && (
-          <section className="mt-12">
-            <h2 className="text-[14px] uppercase tracking-[0.18em] text-subtle">
-              Relaterte helligdager
-            </h2>
-            <ul className="mt-4 divide-y divide-rule border-y border-rule">
-              {related.map((r) => (
-                <li key={r.slug}>
-                  <Link
-                    href={`/helligdager/${r.slug}`}
-                    className="group flex items-baseline justify-between gap-4 py-4 transition-colors hover:text-accent"
-                  >
-                    <span className="text-[17px] text-ink group-hover:text-accent">
-                      {r.name}
-                    </span>
-                    <span className="text-[13px] uppercase tracking-[0.14em] text-subtle">
-                      {r.fixed ? "Fast" : "Bevegelig"}
-                    </span>
-                  </Link>
-                </li>
-              ))}
-            </ul>
-          </section>
-        )}
-
-        <nav
-          aria-label="Tilbake"
-          className="mt-16 border-t border-rule pt-6 text-[14px]"
-        >
-          <Link
-            href={`/helligdager-${year}`}
-            className="text-subtle underline decoration-rule underline-offset-4 transition-colors hover:text-ink hover:decoration-ink"
-          >
-            ← Alle helligdager i {year}
-          </Link>
-        </nav>
-      </div>
-    </>
+    <DayInfoPage
+      eyebrow="Helligdag"
+      name={info.name}
+      intro={info.intro}
+      path={`/helligdager/${info.slug}`}
+      crumbs={[
+        { href: "/", label: "Forside" },
+        { href: `/helligdager-${year}`, label: `Helligdager ${year}` },
+        { label: info.name },
+      ]}
+      facts={facts}
+      explanation={info.explanation}
+      related={resolveRelatedDays(info.related)}
+      backLink={{ href: `/helligdager-${year}`, label: `Alle helligdager i ${year}` }}
+    />
   );
 }

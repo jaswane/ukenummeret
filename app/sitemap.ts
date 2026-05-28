@@ -1,5 +1,6 @@
 import type { MetadataRoute } from "next";
 import { HOLIDAY_SLUGS } from "@/lib/holidayInfo";
+import { OBSERVANCE_SLUGS } from "@/lib/observanceInfo";
 
 const BASE_URL = "https://ukenummeret.no";
 const YEARS = Array.from({ length: 11 }, (_, i) => 2025 + i);
@@ -23,7 +24,8 @@ export default function sitemap(): MetadataRoute.Sitemap {
     yearly.push(`/uker/${y}`);
   }
   const holidayInfo = HOLIDAY_SLUGS.map((slug) => `/helligdager/${slug}`);
-  return [...staticPaths, ...yearly, ...holidayInfo].map((path) => ({
+  const observanceInfo = OBSERVANCE_SLUGS.map((slug) => `/merkedager/${slug}`);
+  return [...staticPaths, ...yearly, ...holidayInfo, ...observanceInfo].map((path) => ({
     url: `${BASE_URL}${path}`,
     lastModified: now,
     changeFrequency: path === "" ? "daily" : "monthly",

@@ -4,6 +4,7 @@ import {
   type Holiday,
 } from "@/lib/norwegianHolidays";
 import { getHolidayInfoByName } from "@/lib/holidayInfo";
+import { getObservanceInfoByName } from "@/lib/observanceInfo";
 import { capitalize } from "@/lib/weekUtils";
 
 export default function HolidayList({
@@ -17,15 +18,25 @@ export default function HolidayList({
     <ul className="divide-y divide-rule border-y border-rule">
       {holidays.map((h, i) => {
         const meta = decorateHoliday(h, today);
-        const info = h.kind === "public" ? getHolidayInfoByName(h.name) : null;
+        const publicInfo =
+          h.kind === "public" ? getHolidayInfoByName(h.name) : null;
+        const observanceInfo =
+          h.kind === "observance" ? getObservanceInfoByName(h.name) : null;
         return (
           <li key={i} className="grid gap-2 py-4 sm:grid-cols-[160px_1fr_auto] sm:items-baseline sm:gap-6">
             <span className="text-[15px] tnum text-ink">{meta.formattedDate}</span>
             <span className="text-[17px] text-ink">
-              {info ? (
+              {publicInfo ? (
                 <Link
-                  href={`/helligdager/${info.slug}`}
+                  href={`/helligdager/${publicInfo.slug}`}
                   className="text-ink underline decoration-rule underline-offset-4 transition-colors hover:text-accent hover:decoration-accent"
+                >
+                  {h.name}
+                </Link>
+              ) : observanceInfo ? (
+                <Link
+                  href={`/merkedager/${observanceInfo.slug}`}
+                  className="text-muted underline decoration-rule underline-offset-4 transition-colors hover:text-accent hover:decoration-accent"
                 >
                   {h.name}
                 </Link>

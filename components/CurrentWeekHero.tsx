@@ -1,6 +1,7 @@
 import Link from "next/link";
 import {
   capitalize,
+  formatNorwegianDate,
   formatNorwegianDateRange,
   getCurrentNorwegianDate,
   getIsoWeekInfo,
@@ -28,7 +29,8 @@ export default function CurrentWeekHero() {
           <div className="flex items-baseline justify-between gap-4 border-t border-rule pt-3 sm:justify-start">
             <dt className="uppercase tracking-[0.14em]">I dag</dt>
             <dd className="tnum text-ink">
-              {capitalize(info.weekdayName)} · dag {info.dayOfWeek} av 7 i uken
+              {capitalize(info.weekdayName)} · {formatNorwegianDate(today)} · dag{" "}
+              {info.dayOfWeek} av 7 i uken
             </dd>
           </div>
           {next && (
