@@ -65,6 +65,33 @@ describe("ISO-ukeberegning", () => {
   });
 });
 
+describe("Årsskifte og ISO-uke rundt nyttår", () => {
+  it("2026-12-31 ligger i uke 53 av 2026", () => {
+    const info = getIsoWeek(civilDate(2026, 12, 31));
+    expect(info.isoYear).toBe(2026);
+    expect(info.isoWeek).toBe(53);
+  });
+
+  it("2027-01-01 tilhører fortsatt uke 53 av ISO-året 2026", () => {
+    const info = getIsoWeek(civilDate(2027, 1, 1));
+    expect(info.isoYear).toBe(2026);
+    expect(info.isoWeek).toBe(53);
+  });
+
+  it("2027-01-04 er mandag i uke 1 av 2027", () => {
+    const info = getIsoWeekInfo(civilDate(2027, 1, 4));
+    expect(info.isoYear).toBe(2027);
+    expect(info.isoWeek).toBe(1);
+    expect(info.weekdayName).toBe("mandag");
+  });
+
+  it("nyttårsdag 2025 (onsdag) ligger i uke 1 av 2025", () => {
+    const info = getIsoWeek(civilDate(2025, 1, 1));
+    expect(info.isoYear).toBe(2025);
+    expect(info.isoWeek).toBe(1);
+  });
+});
+
 describe("parseDateOrWeekInput", () => {
   const today = civilDate(2026, 5, 26);
 

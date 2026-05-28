@@ -11,7 +11,7 @@ export const metadata: Metadata = {
     template: "%s | Ukenummeret.no",
   },
   description:
-    "Se hvilken uke det er nå, datoene for uken, neste helligdag og kalender med ukenummer for 2026 og kommende år.",
+    "Se hvilken uke det er nå, datoene for uken, neste helligdag og kalender med ukenummer for inneværende og kommende år.",
   applicationName: "Ukenummeret.no",
   alternates: { canonical: "/" },
   openGraph: {

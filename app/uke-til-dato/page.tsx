@@ -4,6 +4,7 @@ import FAQ, { faqJsonLd } from "@/components/FAQ";
 import { breadcrumbJsonLd } from "@/components/Breadcrumbs";
 import WeekToDateClient from "./WeekToDateClient";
 import { getCurrentNorwegianDate, getIsoWeek } from "@/lib/weekUtils";
+import { getPublishedYears } from "@/lib/years";
 
 export const metadata: Metadata = {
   title: "Uke til dato – finn datoene for et ukenummer",
@@ -16,7 +17,7 @@ const FAQ_ITEMS = [
   {
     question: "Hvilke år har uke 53?",
     answer:
-      "Et ISO-år har 53 uker når 1. januar er en torsdag, eller når 31. desember er en torsdag i et skuddår. Eksempler i nær fremtid: 2020 og 2026.",
+      "Et ISO-år har 53 uker når 1. januar er en torsdag, eller når 31. desember er en torsdag i et skuddår. Eksempler er 2020, 2026 og 2032.",
   },
   {
     question: "Hvorfor finnes ikke uke 53 hvert år?",
@@ -64,7 +65,11 @@ export default async function WeekToDatePage({
       />
 
       <div className="mx-auto max-w-3xl px-5 py-12 sm:px-8 sm:py-16">
-        <WeekToDateClient initialYear={initialYear} initialWeek={initialWeek} />
+        <WeekToDateClient
+          initialYear={initialYear}
+          initialWeek={initialWeek}
+          years={getPublishedYears()}
+        />
 
         <section className="mt-16 max-w-prose space-y-4 text-[16px] leading-relaxed text-subtle">
           <h2 className="text-[14px] uppercase tracking-[0.18em] text-subtle">

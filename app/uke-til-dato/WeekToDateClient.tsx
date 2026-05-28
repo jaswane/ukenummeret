@@ -16,9 +16,11 @@ import {
 export default function WeekToDateClient({
   initialYear,
   initialWeek,
+  years,
 }: {
   initialYear: number;
   initialWeek: number;
+  years: number[];
 }) {
   const [year, setYear] = useState(initialYear);
   const [week, setWeek] = useState(initialWeek);
@@ -34,8 +36,6 @@ export default function WeekToDateClient({
     if (!range) return [];
     return Array.from({ length: 7 }, (_, i) => addDays(range.start, i));
   }, [range]);
-
-  const years = Array.from({ length: 11 }, (_, i) => 2025 + i);
 
   return (
     <div className="space-y-10">

@@ -11,14 +11,18 @@ import {
   getWeekDateRange,
   getWeeksInIsoYear,
 } from "@/lib/weekUtils";
-
-const SUPPORTED_YEARS = Array.from({ length: 11 }, (_, i) => 2025 + i);
+import {
+  FIRST_PUBLISHED_YEAR,
+  getPublishedYears,
+  isSupportedYear,
+  maxSupportedYear,
+} from "@/lib/years";
 
 // Markerer "nåværende uke" når året er inneværende. Re-bygg hver time.
 export const revalidate = 3600;
 
 export function generateStaticParams() {
-  return SUPPORTED_YEARS.map((year) => ({ year: String(year) }));
+  return getPublishedYears().map((year) => ({ year: String(year) }));
 }
 
 export async function generateMetadata({
@@ -48,7 +52,7 @@ export default async function WeeksYearPage({
 }) {
   const { year: yearStr } = await params;
   const year = Number(yearStr);
-  if (!SUPPORTED_YEARS.includes(year)) notFound();
+  if (!isSupportedYear(year)) notFound();
 
   const today = getCurrentNorwegianDate();
   const { isoYear: currentIsoYear, isoWeek: currentIsoWeek } = getIsoWeek(today);
@@ -57,9 +61,8 @@ export default async function WeeksYearPage({
     const w = i + 1;
     return { week: w, ...getWeekDateRange(year, w) };
   });
-  const prev = year > SUPPORTED_YEARS[0] ? year - 1 : null;
-  const next =
-    year < SUPPORTED_YEARS[SUPPORTED_YEARS.length - 1] ? year + 1 : null;
+  const prev = year > FIRST_PUBLISHED_YEAR ? year - 1 : null;
+  const next = year < maxSupportedYear() ? year + 1 : null;
 
   const crumbs = [
     { href: "/", label: "Forside" },

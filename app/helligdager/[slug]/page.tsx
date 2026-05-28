@@ -26,15 +26,21 @@ import {
 } from "@/lib/holidayInfo";
 import DayInfoPage, { type DayFact } from "@/components/DayInfoPage";
 import { resolveRelatedDays } from "@/lib/dayLinks";
+import {
+  FIRST_PUBLISHED_YEAR,
+  getPublishedYears,
+  isSupportedYear,
+  maxSupportedYear,
+} from "@/lib/years";
 
-const SUPPORTED_YEARS = Array.from({ length: 11 }, (_, i) => 2025 + i);
-const YEAR_SLUGS = SUPPORTED_YEARS.map(String);
+const isYearSlug = (slug: string) => /^\d{4}$/.test(slug);
 
 // "Om X dager"-telling og "i år"-data krever oppdatert dato.
 export const revalidate = 3600;
 
 export function generateStaticParams() {
-  return [...YEAR_SLUGS, ...HOLIDAY_SLUGS].map((slug) => ({ slug }));
+  const yearSlugs = getPublishedYears().map(String);
+  return [...yearSlugs, ...HOLIDAY_SLUGS].map((slug) => ({ slug }));
 }
 
 export async function generateMetadata({
@@ -44,7 +50,7 @@ export async function generateMetadata({
 }): Promise<Metadata> {
   const { slug } = await params;
 
-  if (YEAR_SLUGS.includes(slug)) {
+  if (isYearSlug(slug)) {
     const year = Number(slug);
     const path = `/helligdager-${year}`;
     return {
@@ -90,7 +96,7 @@ export default async function HolidaysSlugPage({
 }) {
   const { slug } = await params;
 
-  if (YEAR_SLUGS.includes(slug)) {
+  if (isYearSlug(slug)) {
     return <YearView year={Number(slug)} />;
   }
 
@@ -107,16 +113,15 @@ export default async function HolidaysSlugPage({
 // =====================================================================
 
 function YearView({ year }: { year: number }) {
-  if (!SUPPORTED_YEARS.includes(year)) notFound();
+  if (!isSupportedYear(year)) notFound();
 
   const today = getCurrentNorwegianDate();
   const isCurrent = today.getUTCFullYear() === year;
   const referenceDate = isCurrent ? today : null;
   const publicHolidays = getNorwegianPublicHolidays(year);
   const observances = getNorwegianObservances(year);
-  const prev = year > SUPPORTED_YEARS[0] ? year - 1 : null;
-  const next =
-    year < SUPPORTED_YEARS[SUPPORTED_YEARS.length - 1] ? year + 1 : null;
+  const prev = year > FIRST_PUBLISHED_YEAR ? year - 1 : null;
+  const next = year < maxSupportedYear() ? year + 1 : null;
 
   const crumbs = [
     { href: "/", label: "Forside" },

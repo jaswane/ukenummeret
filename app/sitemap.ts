@@ -1,12 +1,16 @@
 import type { MetadataRoute } from "next";
 import { HOLIDAY_SLUGS } from "@/lib/holidayInfo";
 import { OBSERVANCE_SLUGS } from "@/lib/observanceInfo";
+import { getPublishedYears } from "@/lib/years";
 
 const BASE_URL = "https://ukenummeret.no";
-const YEARS = Array.from({ length: 11 }, (_, i) => 2025 + i);
+
+// Regenerer daglig slik at årsspennet følger med over årsskifter.
+export const revalidate = 86400;
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const now = new Date();
+  const YEARS = getPublishedYears();
   const staticPaths = [
     "",
     "/dato-til-uke",

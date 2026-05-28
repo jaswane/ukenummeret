@@ -1,15 +1,15 @@
 import type { NextConfig } from "next";
 
-const yearSlugs = (prefix: string) =>
-  Array.from({ length: 11 }, (_, i) => 2025 + i).map((year) => ({
-    source: `/${prefix}-${year}`,
-    destination: `/${prefix}/${year}`,
-  }));
-
 const nextConfig: NextConfig = {
   reactStrictMode: true,
   async rewrites() {
-    return [...yearSlugs("kalender"), ...yearSlugs("helligdager")];
+    // Matcher alle firesifrede år, så /kalender-YYYY og /helligdager-YYYY
+    // fungerer uavhengig av hvilket år det er. Selve sidene validerer om
+    // året er innenfor støttet spenn.
+    return [
+      { source: "/kalender-:year(\\d{4})", destination: "/kalender/:year" },
+      { source: "/helligdager-:year(\\d{4})", destination: "/helligdager/:year" },
+    ];
   },
 };
 
