@@ -36,6 +36,26 @@ export default function Footer() {
             Swane Creative
           </a>
         </p>
+        <p className="mt-3">
+          Andre enkle verktøy:{" "}
+          <a
+            href="https://utregn.no"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="underline decoration-rule underline-offset-4 transition-colors hover:text-accent hover:decoration-accent"
+          >
+            Utregn.no
+          </a>
+          {" · "}
+          <a
+            href="https://fridagene.no"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="underline decoration-rule underline-offset-4 transition-colors hover:text-accent hover:decoration-accent"
+          >
+            Fridagene.no
+          </a>
+        </p>
       </div>
     </footer>
   );
